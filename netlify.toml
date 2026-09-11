@@ -1,0 +1,19 @@
+[build]
+  publish = "static"
+
+[[redirects]]
+  from = "/chat"
+  to = "https://YOUR-BACKEND-URL.onrender.com/chat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/dade"
+  to = "https://YOUR-BACKEND-URL.onrender.com/dade"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

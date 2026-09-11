@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>MRX GPT</title>
+<meta name="description" content="WormGPT مجاني و سريع و بدون قيود و حقيقي و محمي و اصلي 100/100">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="MRX GPT">
+<meta property="og:description" content="WormGPT مجاني و سريع و بدون قيود و حقيقي و محمي و اصلي 100/100">
+<meta property="og:image" content="https://wormgpt.net/wormgpt_logo.png">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MRX GPT">
+<meta name="twitter:description" content="WormGPT مجاني و سريع و بدون قيود و حقيقي و محمي و اصلي 100/100">
+<meta name="twitter:image" content="https://wormgpt.net/wormgpt_logo.png">
+<link rel="icon" type="image/png" href="https://wormgpt.net/wormgpt_logo.png">
+<link rel="apple-touch-icon" href="https://wormgpt.net/wormgpt_logo.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --primary:#ff0055;
+  --primary-dark:#8b0030;
+  --bg:#000;
+  --text:#fff;
+  --dim:#8890a0;
+  --glass:rgba(255,255,255,.06);
+  --border:rgba(255,0,85,.25);
+  --font-size:16px;
+}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Tajawal','Segoe UI',sans-serif;font-size:var(--font-size)}
+body{
+  background:radial-gradient(ellipse at 50% 30%,rgba(255,0,85,.28) 0%,rgba(120,0,30,.1) 45%,#000 88%);
+  color:var(--text);display:flex;flex-direction:column;
+}
+
+/* SPLASH */
+.splash{position:fixed;inset:0;z-index:9999;background:#000;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:24px;transition:opacity .6s}
+.splash.hide{opacity:0;pointer-events:none}
+.splash-logo{width:130px;height:130px;border-radius:50%;
+  border:2px solid var(--primary);
+  box-shadow:0 0 45px rgba(255,0,85,.6);
+  display:flex;align-items:center;justify-content:center;
+  animation:pulse 1.6s infinite alternate;padding:14px}
+.splash-logo img{width:100%;height:100%;object-fit:contain}
+@keyframes pulse{
+  0%{transform:scale(1);box-shadow:0 0 30px rgba(255,0,85,.4)}
+  100%{transform:scale(1.05);box-shadow:0 0 65px rgba(255,0,85,.85)}
+}
+.splash-title{color:#fff;font-size:1.6rem;font-weight:900;
+  background:linear-gradient(135deg,#fff,var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  letter-spacing:2px}
+.splash-bar{width:220px;height:4px;background:rgba(255,255,255,.1);
+  border-radius:2px;overflow:hidden;position:relative}
+.splash-fill{position:absolute;inset:0 auto 0 0;width:0%;
+  background:var(--primary);box-shadow:0 0 12px var(--primary);
+  transition:width .08s linear}
+.splash-text{color:var(--primary);font-weight:700;font-size:.85rem;letter-spacing:1px}
+
+/* HEADER */
+.header{display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;padding-top:calc(12px + env(safe-area-inset-top));
+  background:rgba(0,0,0,.9);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);z-index:100}
+.hdr-btn{width:40px;height:40px;border-radius:14px;
+  background:var(--glass);border:1px solid var(--border);
+  color:var(--primary);display:flex;align-items:center;justify-content:center;
+  cursor:pointer;font-size:.9rem;transition:.2s}
+.hdr-btn:active{transform:scale(.92);background:rgba(255,0,85,.15)}
+.hdr-brand{display:flex;align-items:center;gap:10px;
+  color:#ffd0d8;font-weight:800;font-size:1rem;letter-spacing:1px}
+.hdr-logo{width:24px;height:24px;border-radius:50%;overflow:hidden;
+  border:1px solid var(--primary);padding:2px}
+.hdr-logo img{width:100%;height:100%;object-fit:contain}
+.hdr-dot{width:8px;height:8px;border-radius:50%;background:var(--primary);animation:blink 1.6s infinite}
+@keyframes blink{50%{opacity:.4}}
+
+/* CHAT */
+.chat{flex:1;overflow-y:auto;padding:16px 12px 20px;
+  display:flex;flex-direction:column;scroll-behavior:smooth}
+.chat::-webkit-scrollbar{width:4px}
+.chat::-webkit-scrollbar-thumb{background:var(--primary);border-radius:4px}
+.inner{width:100%;max-width:820px;margin:0 auto;
+  display:flex;flex-direction:column;gap:14px}
+
+/* WELCOME */
+.welcome{display:flex;flex-direction:column;align-items:center;justify-content:center;
+  margin:auto;padding:20px;text-align:center;min-height:55vh}
+.welcome-logo{width:120px;height:120px;border-radius:30px;
+  background:#0f0305;border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;margin-bottom:20px;box-shadow:0 0 50px rgba(255,0,85,.3)}
+.welcome-logo img{width:100%;height:100%;object-fit:contain;animation:spin 16s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.welcome h1{font-size:2rem;font-weight:900;
+  background:linear-gradient(135deg,#fff,var(--primary));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;
+  margin-bottom:8px;letter-spacing:1px}
+.welcome p{color:var(--dim);font-size:.85rem;line-height:1.6;max-width:280px}
+
+/* MESSAGE */
+.msg{display:flex;flex-direction:column;animation:slide .3s ease}
+.msg.user{align-items:flex-start}
+.msg.bot{align-items:flex-end}
+@keyframes slide{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+.msg-head{display:flex;align-items:center;gap:6px;
+  font-size:.7rem;font-weight:800;margin-bottom:5px}
+.msg.user .msg-head{color:#fff}
+.msg.bot .msg-head{color:var(--primary)}
+.msg-avatar{width:20px;height:20px;border-radius:50%;
+  border:1px solid var(--primary);overflow:hidden;padding:1px;background:#000}
+.msg-avatar img{width:100%;height:100%;object-fit:contain}
+
+.bubble{max-width:90%;padding:12px 16px;border-radius:18px;
+  font-size:.93rem;line-height:1.75;
+  word-wrap:break-word;overflow-wrap:anywhere}
+.msg.user .bubble{
+  background:linear-gradient(135deg,rgba(255,0,85,.2),rgba(139,0,48,.25));
+  border:1px solid rgba(255,0,85,.4);
+  border-top-right-radius:6px;color:#fff}
+.msg.bot .bubble{background:rgba(15,3,8,.78);
+  border:1px solid var(--border);
+  border-top-left-radius:6px;color:#e8e8f0}
+
+/* Formatting */
+.bubble strong,.bubble b{color:var(--primary);font-weight:800}
+.bubble em,.bubble i{color:#fbbf24;font-style:normal;font-weight:600}
+.bubble code{background:rgba(0,0,0,.65);color:#fbbf24;
+  padding:2px 7px;border-radius:6px;
+  font-family:'Courier New',monospace;font-size:.86em;
+  direction:ltr;display:inline-block}
+.bubble pre{background:#08080a;border:1px solid rgba(255,0,85,.25);
+  border-radius:12px;padding:16px 14px 14px;margin:10px 0;
+  overflow-x:auto;direction:ltr;text-align:left;
+  font-family:'Courier New',monospace;font-size:.82em;
+  line-height:1.6;color:#d0d0dc;position:relative}
+.bubble pre .lang{position:absolute;top:0;right:0;
+  background:rgba(255,0,85,.18);color:var(--primary);
+  padding:3px 12px;border-bottom-left-radius:10px;
+  font-size:.7em;font-family:'Tajawal',sans-serif;
+  border-bottom:1px solid var(--border);border-left:1px solid var(--border)}
+.bubble pre .copy-c{position:absolute;top:0;left:0;
+  background:rgba(255,0,85,.18);color:#fff;
+  padding:3px 12px;border-radius:0 0 10px 0;
+  font-size:.7em;cursor:pointer;border:none;
+  font-family:'Tajawal',sans-serif;
+  border-bottom:1px solid var(--border);border-right:1px solid var(--border)}
+.bubble pre .copy-c:active{background:var(--primary)}
+
+.actions{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.act{background:rgba(255,0,85,.08);border:1px solid var(--border);
+  color:#ffb8c4;font-size:.7rem;padding:5px 12px;
+  border-radius:10px;cursor:pointer;display:flex;
+  align-items:center;gap:5px;font-family:'Tajawal',sans-serif;transition:.15s}
+.act:active{transform:scale(.94);background:rgba(255,0,85,.2)}
+.act.on{background:var(--primary);color:#fff}
+
+.typing{display:flex;gap:5px;padding:14px 18px;
+  background:rgba(15,3,8,.78);border:1px solid var(--border);
+  border-radius:18px;border-top-left-radius:6px;
+  align-self:flex-end;width:fit-content}
+.typing span{width:8px;height:8px;border-radius:50%;background:var(--primary);
+  animation:bounce 1.4s infinite}
+.typing span:nth-child(2){animation-delay:.2s}
+.typing span:nth-child(3){animation-delay:.4s}
+@keyframes bounce{0%,60%,100%{transform:translateY(0);opacity:.4}30%{transform:translateY(-8px);opacity:1}}
+
+/* FOOTER */
+.footer{padding:10px 12px;padding-bottom:calc(10px + env(safe-area-inset-bottom));
+  display:flex;justify-content:center;z-index:100}
+.input-box{width:100%;max-width:820px;
+  background:rgba(18,18,20,.95);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--primary);border-radius:24px;
+  padding:10px 14px;display:flex;flex-direction:column;gap:8px;
+  box-shadow:0 0 22px rgba(255,0,85,.28);transition:box-shadow .3s}
+.input-box:focus-within{box-shadow:0 0 32px rgba(255,0,85,.55)}
+.input-box textarea{width:100%;background:transparent;border:none;outline:none;
+  color:#fff;font-size:.95rem;resize:none;max-height:140px;
+  font-family:'Tajawal',sans-serif;line-height:1.5;padding:6px 0;text-align:right}
+.input-box textarea::placeholder{color:var(--dim)}
+.input-row{display:flex;align-items:center;justify-content:space-between;
+  gap:8px;border-top:1px solid rgba(255,255,255,.08);padding-top:6px}
+.send-btn{width:36px;height:36px;border-radius:50%;
+  background:var(--primary);border:none;color:#fff;
+  font-size:1rem;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 15px rgba(255,0,85,.5);transition:transform .15s}
+.send-btn:active{transform:scale(.9)}
+.send-btn:disabled{opacity:.4;cursor:not-allowed}
+.tool-row{display:flex;gap:14px;align-items:center}
+.tool{background:none;border:none;color:var(--dim);font-size:1rem;
+  cursor:pointer;transition:.15s;padding:4px}
+.tool:hover,.tool:active{color:var(--primary)}
+
+/* EMOJI */
+.emoji{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);
+  width:92%;max-width:480px;background:rgba(13,2,4,.98);
+  border:1px solid var(--border);border-radius:20px;padding:12px;
+  z-index:200;display:none;backdrop-filter:blur(20px);
+  box-shadow:0 0 40px rgba(0,0,0,.8)}
+.emoji.open{display:flex;flex-direction:column;gap:8px}
+.emoji-head{display:flex;justify-content:space-between;align-items:center;
+  border-bottom:1px solid var(--border);padding-bottom:8px;
+  font-size:.75rem;font-weight:800;color:var(--primary)}
+.emoji-tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;
+  border-bottom:1px solid rgba(255,0,85,.1)}
+.emoji-tab{background:rgba(255,0,85,.08);border:1px solid var(--border);
+  color:#ccc;padding:4px 10px;border-radius:8px;
+  font-size:.7rem;cursor:pointer;white-space:nowrap;font-family:'Tajawal',sans-serif}
+.emoji-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.emoji-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:4px;
+  max-height:220px;overflow-y:auto;padding:4px}
+.emoji-grid button{background:transparent;border:none;font-size:1.2rem;
+  padding:4px;border-radius:8px;cursor:pointer;transition:.1s}
+.emoji-grid button:hover{background:rgba(255,0,85,.2)}
+
+/* MODAL */
+.modal{position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.85);
+  backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px}
+.modal.open{display:flex}
+.modal-box{background:rgba(18,3,6,.98);border:1px solid var(--border);
+  border-radius:22px;padding:24px;max-width:380px;width:100%;text-align:center}
+.modal-box p{color:#ffb8c4;font-size:.85rem;font-weight:700;margin-bottom:18px}
+.modal-box input{width:100%;background:#18181b;border:1px solid var(--border);
+  color:#fff;padding:10px 14px;border-radius:10px;font-size:.85rem;
+  outline:none;text-align:right;margin-bottom:14px;font-family:'Tajawal',sans-serif}
+.modal-row{display:flex;gap:8px}
+.modal-btn{flex:1;padding:10px;border-radius:10px;border:none;
+  font-size:.82rem;font-weight:800;cursor:pointer;font-family:'Tajawal',sans-serif}
+.modal-btn.ok{background:#10b981;color:#fff}
+.modal-btn.no{background:#dc2626;color:#fff}
+
+/* SIDEBAR */
+.side-bg{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:290;display:none}
+.side-bg.open{display:block}
+.side{position:fixed;top:0;bottom:0;right:0;width:290px;
+  background:rgba(13,2,4,.98);border-left:1px solid var(--border);
+  z-index:300;transform:translateX(100%);transition:transform .25s ease;
+  display:flex;flex-direction:column;padding:18px;backdrop-filter:blur(20px)}
+.side.open{transform:translateX(0)}
+.side-head{display:flex;justify-content:space-between;align-items:center;
+  padding-bottom:12px;border-bottom:1px solid var(--border);
+  margin-bottom:14px;font-weight:800;color:var(--primary);font-size:.85rem}
+.side-group{background:rgba(255,0,85,.05);border:1px solid var(--border);
+  border-radius:14px;padding:12px;margin-bottom:12px}
+.side-group label{display:block;color:#ffb8c4;font-size:.75rem;
+  margin-bottom:6px;font-weight:700}
+.side-group select{width:100%;background:#18181b;border:1px solid var(--border);
+  color:#fff;padding:8px 12px;border-radius:8px;font-size:.8rem;
+  outline:none;font-family:'Tajawal',sans-serif}
+.side-btn{width:100%;padding:10px;border-radius:12px;
+  background:var(--primary-dark);color:#fff;border:none;
+  font-weight:800;font-size:.82rem;cursor:pointer;
+  margin-bottom:12px;font-family:'Tajawal',sans-serif}
+.side-btn:active{background:var(--primary)}
+.side-rooms{flex:1;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+.room{display:flex;justify-content:space-between;align-items:center;
+  background:rgba(255,0,85,.06);border:1px solid var(--border);
+  border-radius:10px;padding:8px 12px;font-size:.8rem;color:#ffb8c4}
+.room button{background:none;border:none;color:var(--primary);
+  cursor:pointer;font-size:.8rem}
+
+/* TOAST */
+.toast{position:fixed;bottom:100px;left:50%;
+  transform:translateX(-50%) translateY(50px);
+  background:rgba(15,3,8,.98);border:1px solid var(--primary);
+  color:#ffb8c4;font-size:.8rem;font-weight:700;
+  padding:10px 20px;border-radius:50px;
+  opacity:0;pointer-events:none;transition:.3s;z-index:900}
+.toast.on{opacity:1;transform:translateX(-50%) translateY(0)}
+</style>
+</head>
+<body>
+
+<div class="splash" id="splash">
+  <div class="splash-logo">
+    <img src="https://wormgpt.net/wormgpt_logo.png" alt="MRX GPT">
+  </div>
+  <div class="splash-title">MRX GPT</div>
+  <div class="splash-bar"><div class="splash-fill" id="splashFill"></div></div>
+  <div class="splash-text" id="splashText">جاري التحميل...</div>
+</div>
+
+<header class="header">
+  <button class="hdr-btn" onclick="openModal('clearModal')"><i class="fas fa-trash-can"></i></button>
+  <div class="hdr-brand">
+    <div class="hdr-logo"><img src="https://wormgpt.net/wormgpt_logo.png"></div>
+    <span class="hdr-dot"></span> MRX GPT ⚡
+  </div>
+  <button class="hdr-btn" onclick="toggleSide()"><i class="fas fa-bars"></i></button>
+</header>
+
+<main class="chat" id="chat">
+  <div class="inner" id="inner">
+    <div class="welcome" id="welcome">
+      <div class="welcome-logo">
+        <img src="https://wormgpt.net/wormgpt_logo.png" alt="MRX GPT">
+      </div>
+      <h1>MRX GPT</h1>
+      <p id="welDesc">WormGPT مجاني و سريع و بدون قيود و حقيقي و محمي و اصلي 100/100</p>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="input-box">
+    <textarea id="inp" rows="1" placeholder="اكتب رسالتك..."
+      oninput="autoResize(this)" onkeydown="onKey(event)"></textarea>
+    <div class="input-row">
+      <button class="send-btn" id="sendBtn" onclick="send()">↑</button>
+      <div class="tool-row">
+        <button class="tool" onclick="pickFile()" title="ملف"><i class="fas fa-paperclip"></i></button>
+        <button class="tool" onclick="toggleEmoji()" title="إيموجي"><i class="far fa-face-smile"></i></button>
+        <button class="tool" onclick="voiceInput()" title="صوت"><i class="fas fa-microphone"></i></button>
+        <button class="tool" onclick="newRoom()" title="غرفة"><i class="fas fa-plus"></i></button>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<div class="emoji" id="emojiBox">
+  <div class="emoji-head">
+    <span>لوحة الإيموجي ⚡</span>
+    <button onclick="toggleEmoji()" style="background:none;border:none;color:var(--primary);cursor:pointer;">✕</button>
+  </div>
+  <div class="emoji-tabs">
+    <button class="emoji-tab active" onclick="loadEmoji('all',this)">الكل</button>
+    <button class="emoji-tab" onclick="loadEmoji('faces',this)">😀</button>
+    <button class="emoji-tab" onclick="loadEmoji('flags',this)">🏳️</button>
+    <button class="emoji-tab" onclick="loadEmoji('animals',this)">🐱</button>
+    <button class="emoji-tab" onclick="loadEmoji('objects',this)">⚽</button>
+    <button class="emoji-tab" onclick="loadEmoji('symbols',this)">⚡</button>
+  </div>
+  <div class="emoji-grid" id="emojiGrid"></div>
+</div>
+
+<div class="side-bg" id="sideBg" onclick="toggleSide()"></div>
+<aside class="side" id="side">
+  <div class="side-head">
+    <span>الإعدادات والغرف</span>
+    <button onclick="toggleSide()" style="background:none;border:none;color:var(--primary);cursor:pointer;">✕</button>
+  </div>
+  <div class="side-group">
+    <label>اللغة</label>
+    <select id="langSel" onchange="setLang()">
+      <option value="ar">العربية</option>
+      <option value="en">English</option>
+    </select>
+  </div>
+  <div class="side-group">
+    <label>حجم الخط</label>
+    <select id="fontSel" onchange="setFont()">
+      <option value="14">صغير</option>
+      <option value="16" selected>متوسط</option>
+      <option value="18">كبير</option>
+      <option value="20">ضخم</option>
+    </select>
+  </div>
+  <button class="side-btn" onclick="newRoom()">+ غرفة جديدة</button>
+  <div class="side-rooms" id="roomsList"></div>
+</aside>
+
+<div class="modal" id="clearModal">
+  <div class="modal-box">
+    <p>حذف جميع الرسائل؟</p>
+    <div class="modal-row">
+      <button class="modal-btn ok" onclick="clearChat()">تأكيد</button>
+      <button class="modal-btn no" onclick="closeModal('clearModal')">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="roomModal">
+  <div class="modal-box">
+    <p>اسم الغرفة الجديدة:</p>
+    <input id="roomName" placeholder="مثال: مشروعي" />
+    <div class="modal-row">
+      <button class="modal-btn ok" onclick="addRoom()">تأكيد</button>
+      <button class="modal-btn no" onclick="closeModal('roomModal')">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast">تم</div>
+
+<script>
+const state = {
+  history: [],
+  busy: false,
+  lang: localStorage.getItem('wg_lang') || 'ar',
+  font: localStorage.getItem('wg_font') || '16',
+  rooms: JSON.parse(localStorage.getItem('wg_rooms') || '[]'),
+  currentRoom: localStorage.getItem('wg_current') || 'default'
+};
+
+/* SPLASH */
+(function(){
+  let p = 0;
+  const steps = ['جاري التحميل','جاري الاتصال','تجهيز الواجهة','جاهز'];
+  const fill = document.getElementById('splashFill');
+  const txt = document.getElementById('splashText');
+  const t = setInterval(()=>{
+    p += Math.random()*15 + 6;
+    if(p > 100) p = 100;
+    fill.style.width = p + '%';
+    txt.textContent = steps[Math.min(Math.floor(p/30), 3)];
+    if(p >= 100){
+      clearInterval(t);
+      setTimeout(()=>{
+        const s = document.getElementById('splash');
+        s.classList.add('hide');
+        setTimeout(()=>s.remove(), 700);
+        if(!sessionStorage.getItem('mrx_verified')){
+          location.href = '/dade';
+        }
+      }, 400);
+    }
+  }, 150);
+})();
+
+/* EMOJI */
+const EMOJI = {
+  faces:['😀','😃','😄','😁','😆','😅','😂','🤣','😊','😇','🙂','🙃','😉','😍','🥰','😘','😋','😛','😜','🤪','🧐','🤓','😎','🤩','🥳','😏','😒','😞','😔','😟','😕','🙁','😣','😖','😫','😩','🥺','😢','😭','😤','😠','😡','🤬','🤯','😳','🥵','🥶','😱','😨','😰','😥','🤗','🤔','🤭','🤫','🤥','😶','😐','😑','😬','🙄','😮','😲','😴','🤤','🤒','🤕','🤢','🤮','🤠','🤑','🤖','👻','💀','💩','🤡','👹','👽','👾'],
+  flags:['🇸🇦','🇵🇸','🇪🇬','🇲🇦','🇺🇸','🇬🇧','🇫🇷','🇩🇪','🇯🇵','🇰🇷','🇨🇦','🇹🇷','🇮🇹','🇪🇸','🇦🇪','🇶🇦','🇰🇼','🇴🇲','🇧🇭','🇯🇴','🇱🇧','🇸🇾','🇮🇶','🇾🇪','🇩🇿','🇹🇳','🇱🇾','🇸🇩','🇷🇺','🇨🇳','🇧🇷','🇮🇳','🇮🇷','🇵🇰','🇮🇩','🇲🇾','🏴‍☠️'],
+  animals:['🐶','🐱','🐭','🐹','🐰','🦊','🐻','🐼','🐨','🐯','🦁','🐮','🐷','🐸','🐵','🐔','🐧','🐦','🐤','🦆','🦅','🦉','🦇','🐺','🐗','🐴','🦄','🐝','🐛','🦋','🐞','🐜','🐢','🐍','🦖','🦕','🐙','🦑','🦐','🦞','🦀','🐡','🐠','🐟','🐬','🐳','🐋','🦈','🐊','🐅','🐆','🦓','🦍','🦧','🐘','🦛','🦏','🐪','🐫','🦒','🦘','🐃','🐂','🐄','🐎','🐖','🐏','🐑','🦌','🐕','🐈','🐓','🦃','🦚','🦜','🦢','🦩','🕊️','🐇','🦝'],
+  objects:['💻','🖥️','🖨️','🖱️','⌨️','💽','💾','💿','📀','🧮','🎥','🎬','📺','📷','📸','📹','📼','🔍','🔎','💡','🔦','📔','📕','📖','📗','📘','📙','📚','📓','📒','📃','📜','📄','📰','📑','🔖','🏷️','💰','🪙','💴','💵','💶','💷','💳','✉️','📧','📨','📩','📤','📥','📦','📫','📪','📬','📭','📮','✏️','✒️','🖋️','🖊️','🖌️','📝','💼','📁','📂','📅','📆','📇','📈','📉','📊','📋','📌','📍','📎','📏','📐','✂️','🗑️','🔒','🔓','🔐','🔑','🔨','⛏️','🛠️','🗡️','⚔️','🛡️','🔧','🔩','⚙️','⚖️','🔗','⛓️','🧰','🧪','🧬','🔬','🔭','📡','💉','💊','🩺','🚪','🛏️','🛋️','🚽','🚿','🛁','🧴','🧹','🧺','🧻','🧼','🧯','🛒','🗿'],
+  symbols:['⚡','🔥','💀','👑','🚀','💎','🛡️','⭐','🎯','⚙️','⚠️','✅','❌','💡','💯','💢','💥','💫','💦','💨','💬','💭','💤','♿','🚫','🔞','☢️','☣️','⬆️','➡️','⬇️','⬅️','↕️','↔️','🔃','🔄','🔙','🔚','🔛','🔜','🔝','⚛️','🕉️','✡️','☸️','☯️','✝️','☦️','☪️','☮️','🕎','♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓','🆔']
+};
+EMOJI.all = [...EMOJI.faces, ...EMOJI.flags, ...EMOJI.animals, ...EMOJI.objects, ...EMOJI.symbols];
+
+function loadEmoji(cat = 'all', btn){
+  const grid = document.getElementById('emojiGrid');
+  grid.innerHTML = '';
+  document.querySelectorAll('.emoji-tab').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  (EMOJI[cat] || EMOJI.all).forEach(e=>{
+    const b = document.createElement('button');
+    b.textContent = e;
+    b.onclick = ()=>{
+      const inp = document.getElementById('inp');
+      inp.value += e;
+      inp.focus();
+    };
+    grid.appendChild(b);
+  });
+}
+function toggleEmoji(){
+  const box = document.getElementById('emojiBox');
+  box.classList.toggle('open');
+  if(box.classList.contains('open')) loadEmoji('all', document.querySelector('.emoji-tab'));
+}
+
+/* SIDEBAR */
+function toggleSide(){
+  document.getElementById('side').classList.toggle('open');
+  document.getElementById('sideBg').classList.toggle('open');
+}
+function setLang(){
+  state.lang = document.getElementById('langSel').value;
+  localStorage.setItem('wg_lang', state.lang);
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr';
+  toast('تم تغيير اللغة');
+}
+function setFont(){
+  state.font = document.getElementById('fontSel').value;
+  document.documentElement.style.fontSize = state.font + 'px';
+  localStorage.setItem('wg_font', state.font);
+  toast('تم تغيير حجم الخط');
+}
+
+/* MODAL */
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+function clearChat(){
+  state.history = [];
+  document.getElementById('inner').innerHTML = `
+    <div class="welcome" id="welcome">
+      <div class="welcome-logo">
+        <img src="https://wormgpt.net/wormgpt_logo.png" alt="MRX GPT">
+      </div>
+      <h1>MRX GPT</h1>
+      <p>WormGPT مجاني و سريع و بدون قيود و حقيقي و محمي و اصلي 100/100</p>
+    </div>`;
+  localStorage.removeItem('wg_history_' + state.currentRoom);
+  closeModal('clearModal');
+  toast('تم حذف المحادثة');
+}
+
+/* ROOMS */
+function newRoom(){ openModal('roomModal'); }
+function addRoom(){
+  const name = document.getElementById('roomName').value.trim();
+  if(!name) return;
+  state.rooms.push(name);
+  localStorage.setItem('wg_rooms', JSON.stringify(state.rooms));
+  document.getElementById('roomName').value = '';
+  closeModal('roomModal');
+  renderRooms();
+  toast('تم إنشاء الغرفة');
+}
+function renderRooms(){
+  const list = document.getElementById('roomsList');
+  if(!list) return;
+  list.innerHTML = state.rooms.length ? '' : '<div style="color:#666;text-align:center;font-size:.75rem;padding:14px;">لا توجد غرف</div>';
+  state.rooms.forEach((r,i)=>{
+    const div = document.createElement('div');
+    div.className = 'room';
+    div.innerHTML = `<span>${r}</span><button onclick="delRoom(${i})"><i class="fas fa-trash"></i></button>`;
+    list.appendChild(div);
+  });
+}
+function delRoom(i){
+  state.rooms.splice(i,1);
+  localStorage.setItem('wg_rooms', JSON.stringify(state.rooms));
+  renderRooms();
+  toast('تم الحذف');
+}
+
+/* INPUT */
+function autoResize(t){
+  t.style.height = 'auto';
+  t.style.height = Math.min(t.scrollHeight, 140) + 'px';
+}
+function onKey(e){
+  if(e.key === 'Enter' && !e.shiftKey){
+    e.preventDefault();
+    send();
+  }
+}
+function toast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('on');
+  clearTimeout(t._t);
+  t._t = setTimeout(()=>t.classList.remove('on'), 1800);
+}
+function pickFile(){
+  const i = document.createElement('input');
+  i.type = 'file';
+  i.onchange = e => {
+    const f = e.target.files[0];
+    if(f){
+      const inp = document.getElementById('inp');
+      inp.value += ` [ملف: ${f.name}] `;
+      toast('تم إرفاق الملف');
+    }
+  };
+  i.click();
+}
+function voiceInput(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){ toast('المتصفح لا يدعم الصوت'); return; }
+  const r = new SR();
+  r.lang = state.lang === 'ar' ? 'ar-SA' : 'en-US';
+  r.onstart = ()=>toast('جاري الاستماع...');
+  r.onresult = e => {
+    document.getElementById('inp').value += e.results[0][0].transcript;
+  };
+  r.start();
+}
+
+/* FORMAT */
+function escapeHtml(s){
+  return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function formatReply(text){
+  let html = escapeHtml(text);
+  html = html.replace(/```(\w*)\n?([\s\S]*?)```/g, (m, lang, code)=>{
+    const id = 'c_' + Math.random().toString(36).slice(2,8);
+    const langLabel = lang || 'code';
+    return `<pre id="${id}"><span class="lang">${langLabel}</span><button class="copy-c" onclick="copyCode('${id}')"><i class="fas fa-copy"></i> نسخ</button><code>${code.trim()}</code></pre>`;
+  });
+  html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+  html = html.replace(/(?<!\*)\*([^*\n]+?)\*(?!\*)/g, '<em>$1</em>');
+  html = html.replace(/`([^`\n]+)`/g, '<code>$1</code>');
+  html = html.replace(/\n/g, '<br>');
+  return html;
+}
+function copyCode(id){
+  const el = document.getElementById(id);
+  if(!el) return;
+  const code = el.querySelector('code').textContent;
+  navigator.clipboard.writeText(code).then(()=>toast('تم نسخ الكود'));
+}
+function escapeAttr(s){
+  return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'").replace(/\n/g,'\\n');
+}
+function regen(original){
+  document.getElementById('inp').value = original;
+  send();
+}
+function copyMsg(btn){
+  const bubble = btn.closest('.msg').querySelector('.bubble');
+  navigator.clipboard.writeText(bubble.innerText).then(()=>toast('تم النسخ'));
+}
+function speak(btn){
+  const bubble = btn.closest('.msg').querySelector('.bubble');
+  const text = bubble.innerText;
+  if(!('speechSynthesis' in window)){ toast('لا يدعم النطق'); return; }
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = state.lang === 'ar' ? 'ar-SA' : 'en-US';
+  u.rate = 1;
+  btn.classList.add('on');
+  u.onend = ()=>btn.classList.remove('on');
+  speechSynthesis.speak(u);
+}
+
+/* SEND */
+async function send(){
+  if(state.busy) return;
+  const inp = document.getElementById('inp');
+  const text = inp.value.trim();
+  if(!text) return;
+  state.busy = true;
+  document.getElementById('sendBtn').disabled = true;
+  document.getElementById('welcome')?.remove();
+  const inner = document.getElementById('inner');
+  const time = new Date().toLocaleTimeString('ar-SA',{hour:'2-digit',minute:'2-digit'});
+  inner.insertAdjacentHTML('beforeend', `
+    <div class="msg user">
+      <div class="msg-head">أنت · ${time}</div>
+      <div class="bubble">${escapeHtml(text)}</div>
+    </div>`);
+  state.history.push({role:'user', content:text});
+  inp.value = '';
+  inp.style.height = 'auto';
+  const tid = 't_' + Date.now();
+  inner.insertAdjacentHTML('beforeend', `
+    <div class="msg bot" id="${tid}">
+      <div class="msg-head"><div class="msg-avatar"><img src="https://wormgpt.net/wormgpt_logo.png"></div>MRX GPT</div>
+      <div class="typing"><span></span><span></span><span></span></div>
+    </div>`);
+  document.getElementById('chat').scrollTop = 999999;
+
+  try{
+    const r = await fetch('/chat', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({messages: state.history, room: state.currentRoom})
+    });
+    const data = await r.json();
+    document.getElementById(tid)?.remove();
+    const reply = data.reply || 'عذراً، حدث خطأ.';
+    const formatted = formatReply(reply);
+    inner.insertAdjacentHTML('beforeend', `
+      <div class="msg bot">
+        <div class="msg-head"><div class="msg-avatar"><img src="https://wormgpt.net/wormgpt_logo.png"></div>MRX GPT · ${time}</div>
+        <div class="bubble">${formatted}</div>
+        <div class="actions">
+          <button class="act" onclick="regen('${escapeAttr(text)}')"><i class="fas fa-rotate"></i> إعادة</button>
+          <button class="act" onclick="speak(this)"><i class="fas fa-volume-high"></i> استماع</button>
+          <button class="act" onclick="copyMsg(this)"><i class="fas fa-copy"></i> نسخ</button>
+        </div>
+      </div>`);
+    state.history.push({role:'model', content: reply});
+    localStorage.setItem('wg_history_' + state.currentRoom, JSON.stringify(state.history.slice(-50)));
+  }catch(e){
+    document.getElementById(tid)?.remove();
+    inner.insertAdjacentHTML('beforeend', `
+      <div class="msg bot">
+        <div class="msg-head">MRX GPT</div>
+        <div class="bubble" style="color:#ff4d4d;">خطأ في الاتصال. حاول مرة أخرى.</div>
+      </div>`);
+  }
+  state.busy = false;
+  document.getElementById('sendBtn').disabled = false;
+  document.getElementById('chat').scrollTop = 999999;
+}
+
+/* INIT */
+window.addEventListener('load', ()=>{
+  document.getElementById('langSel').value = state.lang;
+  document.getElementById('fontSel').value = state.font;
+  document.documentElement.style.fontSize = state.font + 'px';
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr';
+  renderRooms();
+  const saved = localStorage.getItem('wg_history_' + state.currentRoom);
+  if(saved){
+    try{
+      state.history = JSON.parse(saved);
+      document.getElementById('welcome')?.remove();
+      const inner = document.getElementById('inner');
+      state.history.forEach(m=>{
+        const isUser = m.role === 'user';
+        inner.insertAdjacentHTML('beforeend', `
+          <div class="msg ${isUser?'user':'bot'}">
+            <div class="msg-head">${isUser?'أنت':'MRX GPT'}</div>
+            <div class="bubble">${isUser ? escapeHtml(m.content) : formatReply(m.content)}</div>
+          </div>`);
+      });
+      document.getElementById('chat').scrollTop = 999999;
+    }catch(e){}
+  }
+});
+</script>
+</body>                                                                             </html>
